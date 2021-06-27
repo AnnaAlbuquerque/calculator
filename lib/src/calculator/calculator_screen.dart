@@ -58,22 +58,29 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               ),
               Flexible(
                 flex: 4,
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  child: Align(
-                    alignment: Alignment.bottomRight,
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                        right: 20,
-                        bottom: 25,
-                      ),
-                      child: Text(
-                        _calculatorController.screenValue,
-                        maxLines: 5,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 45,
-                          fontWeight: FontWeight.bold,
+                child: GestureDetector(
+                  onHorizontalDragEnd: (_) {
+                    setState(() {
+                      _calculatorController.clearLastDigit();
+                    });
+                  },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    child: Align(
+                      alignment: Alignment.bottomRight,
+                      child: Padding(
+                        padding: const EdgeInsets.only(
+                          right: 20,
+                          bottom: 25,
+                        ),
+                        child: Text(
+                          _calculatorController.screenValue,
+                          maxLines: 5,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 45,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
