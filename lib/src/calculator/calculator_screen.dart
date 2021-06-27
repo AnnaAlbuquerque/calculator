@@ -309,8 +309,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                                 textColor: Color(0xFFAE5356),
                                 buttonFunction: () {
                                   setState(() {
-                                    _calculatorController
-                                        .addToScreenValue(buttonValues[19]);
+                                    _calculatorController.equal();
                                   });
                                 },
                               ),

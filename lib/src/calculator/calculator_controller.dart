@@ -29,14 +29,14 @@ class CalculatorController {
     }
   }
 
-  /// clear the last digit of the string [screenValue]
+  /// Clear the last digit of the string [screenValue]
   void clearLastDigit() {
     if (screenValue.length > 0) {
       screenValue = screenValue.substring(0, screenValue.length - 1);
     }
   }
 
-  /// clear [screenValue] value completely
+  /// Clear [screenValue] value completely
   void clearAll() {
     screenValue = "";
   }
@@ -94,22 +94,27 @@ class CalculatorController {
     }
   }
 
+  /// Transform both string parameters in a double an add them
   double addition(String value1, String value2) {
     return double.parse(value1) + double.parse(value2);
   }
 
+  /// Transform both string parameters in a double an subtract them
   double substration(String value1, String value2) {
     return double.parse(value1) - double.parse(value2);
   }
 
+  /// Transform both string parameters in a double an multiple them
   double multiplication(String value1, String value2) {
     return double.parse(value1) * double.parse(value2);
   }
 
+  /// Transform both string parameters in a double an divide them
   double division(String value1, String value2) {
     return double.parse(value1) / double.parse(value2);
   }
 
+  /// Calculate the result of [operationsList]
   double calculate() {
     double value = 0;
 
@@ -143,5 +148,13 @@ class CalculatorController {
       operationsList[0] = value.toString();
       return calculate();
     }
+  }
+
+  /// Make the calculation of [operationsList] and change screenValue to it
+  void equal() {
+    addToList(screenValue);
+    double value = calculate();
+    screenValue = value.toString();
+    operationsList = [];
   }
 }
