@@ -93,4 +93,20 @@ class CalculatorController {
       }
     }
   }
+
+  double addition(String value1, String value2) {
+    return double.parse(value1) + double.parse(value2);
+  }
+
+  double substration(String value1, String value2) {
+    return double.parse(value1) - double.parse(value2);
+  }
+
+  double multiplication(String value1, String value2) {
+    return double.parse(value1) * double.parse(value2);
+  }
+
+  double division(String value1, String value2) {
+    return double.parse(value1) / double.parse(value2);
+  }
 }
