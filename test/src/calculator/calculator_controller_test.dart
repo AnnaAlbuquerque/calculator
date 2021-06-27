@@ -95,5 +95,54 @@ void main() {
       controller.addToScreenValue("-");
       expect(controller.screenValue, "1*-");
     });
+
+    test("Double minus at beggining", () {
+      controller.addToScreenValue("-");
+      controller.addToScreenValue("-");
+      expect(controller.screenValue, "-");
+    });
+
+    test("Double minus at middle", () {
+      controller.addToScreenValue("3");
+      controller.addToScreenValue("-");
+      controller.addToScreenValue("-");
+      controller.addToScreenValue("-");
+      controller.addToScreenValue("4");
+      expect(controller.screenValue, "3--4");
+    });
+
+    test("Double point in same number ", () {
+      controller.addToScreenValue("1");
+      controller.addToScreenValue("2");
+      controller.addToScreenValue(".");
+      controller.addToScreenValue("4");
+      controller.addToScreenValue(".");
+      controller.addToScreenValue("3");
+      expect(controller.screenValue, "12.43");
+    });
+
+    test("Double point in same number ", () {
+      controller.addToScreenValue("1");
+      controller.addToScreenValue("2");
+      controller.addToScreenValue(".");
+      controller.addToScreenValue("4");
+      controller.addToScreenValue(".");
+      controller.addToScreenValue("3");
+      expect(controller.screenValue, "12.43");
+    });
+
+    test("Adds operator after a minus related to signal at begginig", () {
+      controller.addToScreenValue("-");
+      controller.addToScreenValue("+");
+      expect(controller.screenValue, "-");
+    });
+
+    test("Adds operator after a minus related to signal at middle", () {
+      controller.addToScreenValue("12");
+      controller.addToScreenValue("-");
+      controller.addToScreenValue("-");
+      controller.addToScreenValue("*");
+      expect(controller.screenValue, "12--");
+    });
   });
 }
