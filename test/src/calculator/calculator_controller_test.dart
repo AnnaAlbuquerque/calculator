@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:calculator/src/calculator/calculator_controller.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -143,6 +145,159 @@ void main() {
       controller.addToScreenValue("-");
       controller.addToScreenValue("*");
       expect(controller.screenValue, "12--");
+    });
+  });
+
+  group("Add to list funtion", () {
+    group("Only numbers", () {
+      test("Positive number", () {
+        controller.addToList("123");
+        expect(controller.operationsList[0], "123");
+      });
+
+      test("Negative number", () {
+        controller.addToList("-10");
+        expect(controller.operationsList[0], "-10");
+      });
+
+      test("Double value", () {
+        controller.addToList("1.1");
+        expect(controller.operationsList[0], "1.1");
+      });
+    });
+
+    group("Operation 1 + 1", () {
+      setUp(() {
+        controller.addToList("1+1");
+      });
+
+      test("First position", () {
+        expect(controller.operationsList[0], "1");
+      });
+
+      test("Second position", () {
+        expect(controller.operationsList[1], "+");
+      });
+
+      test("Third position", () {
+        expect(controller.operationsList[2], "1");
+      });
+    });
+
+    group("Operation 10 - 1", () {
+      setUp(() {
+        controller.addToList("10-1");
+      });
+
+      test("First position", () {
+        expect(controller.operationsList[0], "10");
+      });
+
+      test("Second position", () {
+        expect(controller.operationsList[1], "-");
+      });
+
+      test("Third position", () {
+        expect(controller.operationsList[2], "1");
+      });
+    });
+
+    group("Operation -10 + 1", () {
+      setUp(() {
+        controller.addToList("-10+1");
+      });
+
+      test("First position", () {
+        expect(controller.operationsList[0], "-10");
+      });
+
+      test("Second position", () {
+        expect(controller.operationsList[1], "+");
+      });
+
+      test("Third position", () {
+        expect(controller.operationsList[2], "1");
+      });
+    });
+
+    group("Operation 10 + -1", () {
+      setUp(() {
+        controller.addToList("10+-1");
+      });
+
+      test("First position", () {
+        expect(controller.operationsList[0], "10");
+      });
+
+      test("Second position", () {
+        expect(controller.operationsList[1], "+");
+      });
+
+      test("Third position", () {
+        expect(controller.operationsList[2], "-1");
+      });
+    });
+
+    group("Operation 1.1 + 1", () {
+      setUp(() {
+        controller.addToList("1.1+1");
+      });
+
+      test("First position", () {
+        expect(controller.operationsList[0], "1.1");
+      });
+
+      test("Second position", () {
+        expect(controller.operationsList[1], "+");
+      });
+
+      test("Third position", () {
+        expect(controller.operationsList[2], "1");
+      });
+    });
+
+    group("Operation 1.1 + 2.1", () {
+      setUp(() {
+        controller.addToList("1.1+2.1");
+      });
+
+      test("First position", () {
+        expect(controller.operationsList[0], "1.1");
+      });
+
+      test("Second position", () {
+        expect(controller.operationsList[1], "+");
+      });
+
+      test("Third position", () {
+        expect(controller.operationsList[2], "2.1");
+      });
+    });
+
+    group("Operation 1 x 1 x 1", () {
+      setUp(() {
+        controller.addToList("1*1*1");
+      });
+
+      test("First position", () {
+        expect(controller.operationsList[0], "1");
+      });
+
+      test("Second position", () {
+        expect(controller.operationsList[1], "*");
+      });
+
+      test("Third position", () {
+        expect(controller.operationsList[2], "1");
+      });
+
+      test("Fourth position", () {
+        expect(controller.operationsList[3], "*");
+      });
+
+      test("Fifth position", () {
+        expect(controller.operationsList[4], "1");
+      });
     });
   });
 }

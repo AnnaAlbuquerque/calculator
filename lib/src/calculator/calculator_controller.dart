@@ -63,22 +63,34 @@ class CalculatorController {
     }
   }
 
-  // ///Add string to a list that separates numbers from
-  // void addToList(String value) {
-  //   if (operationsList.isEmpty) {
-  //     if (numbers.contains(value)) {
-  //       operationsList.add(value);
-  //     }
-  //   } else {
-  //     if (numbers.contains(value) || value == ".") {
-  //       operationsList[operationsList.length - 1] =
-  //           operationsList[operationsList.length - 1] + value;
-  //     } else {
-  //       operationsList.add(value);
-  //       operationsList.add("");
-  //     }
-  //   }
-  // }
-
-  /// List with all button values
+  ///Add string to a list, separating it into numbers and signals
+  void addToList(String value) {
+    for (int i = 0; i < value.length; i++) {
+      if (operators.contains(value[i]) || value[i] == "-") {
+        operationsList.add(value[i]);
+      } else if (value[i] == ".") {
+        operationsList[operationsList.length - 1] =
+            operationsList[operationsList.length - 1] + value[i];
+      } else if (numbers.contains(value[i])) {
+        if (operationsList.isEmpty || operators.contains(value[i - 1])) {
+          operationsList.add(value[i]);
+        } else if (numbers.contains(value[i - 1]) || value[i - 1] == ".") {
+          operationsList[operationsList.length - 1] =
+              operationsList[operationsList.length - 1] + value[i];
+        } else if (value[i - 1] == "-") {
+          if (operationsList.length < 2) {
+            operationsList[operationsList.length - 1] =
+                operationsList[operationsList.length - 1] + value[i];
+          } else {
+            if (operators.contains(value[i - 2])) {
+              operationsList[operationsList.length - 1] =
+                  operationsList[operationsList.length - 1] + value[i];
+            } else {
+              operationsList.add(value[i]);
+            }
+          }
+        }
+      }
+    }
+  }
 }

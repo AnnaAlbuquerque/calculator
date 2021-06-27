@@ -35,6 +35,12 @@ List<String> numbers = [
   "0",
 ];
 
+List<String> operators = [
+  "+",
+  "/",
+  "*",
+];
+
 /// List with acceptable values
 List<String> acceptableValues = [
   "0",
