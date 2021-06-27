@@ -109,4 +109,39 @@ class CalculatorController {
   double division(String value1, String value2) {
     return double.parse(value1) / double.parse(value2);
   }
+
+  double calculate() {
+    double value = 0;
+
+    if (operationsList[operationsList.length - 1] == "." ||
+        operators.contains(operationsList[operationsList.length - 1]) ||
+        operationsList[operationsList.length - 1] == "-") {
+      operationsList.removeLast();
+    }
+    if (operationsList.length == 1) {
+      return double.parse(operationsList[0]);
+    } else {
+      switch (operationsList[1]) {
+        case "+":
+          value = addition(operationsList[0], operationsList[2]);
+          break;
+        case "-":
+          value = substration(operationsList[0], operationsList[2]);
+          break;
+        case "*":
+          value = multiplication(operationsList[0], operationsList[2]);
+          break;
+        case "/":
+          if (operationsList[2] == "0") {
+            throw Exception();
+          }
+          value = division(operationsList[0], operationsList[2]);
+          break;
+      }
+
+      operationsList.removeRange(0, 2);
+      operationsList[0] = value.toString();
+      return calculate();
+    }
+  }
 }

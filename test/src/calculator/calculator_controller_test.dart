@@ -123,16 +123,6 @@ void main() {
       expect(controller.screenValue, "12.43");
     });
 
-    test("Double point in same number ", () {
-      controller.addToScreenValue("1");
-      controller.addToScreenValue("2");
-      controller.addToScreenValue(".");
-      controller.addToScreenValue("4");
-      controller.addToScreenValue(".");
-      controller.addToScreenValue("3");
-      expect(controller.screenValue, "12.43");
-    });
-
     test("Adds operator after a minus related to signal at begginig", () {
       controller.addToScreenValue("-");
       controller.addToScreenValue("+");
@@ -148,7 +138,7 @@ void main() {
     });
   });
 
-  group("Add to list funtion", () {
+  group("Add to list function", () {
     group("Only numbers", () {
       test("Positive number", () {
         controller.addToList("123");
@@ -298,6 +288,55 @@ void main() {
       test("Fifth position", () {
         expect(controller.operationsList[4], "1");
       });
+    });
+  });
+
+  group("Calculate function", () {
+    test("Calculate 1 + 1", () {
+      controller.addToList("1+1");
+      double current = controller.calculate();
+      expect(current, 2.0);
+    });
+
+    test("Calculate 1 + -1", () {
+      controller.addToList("1+-1");
+      double current = controller.calculate();
+      expect(current, 0.0);
+    });
+
+    test("Calculate 1 + 10 + 1", () {
+      controller.addToList("1+10+1");
+      double current = controller.calculate();
+      expect(current, 12.0);
+    });
+
+    test("Calculate 5 - 1", () {
+      controller.addToList("5-1");
+      double current = controller.calculate();
+      expect(current, 4.0);
+    });
+
+    test("Calculate 20 * 1", () {
+      controller.addToList("20*1");
+      double current = controller.calculate();
+      expect(current, 20.0);
+    });
+
+    test("Calculate 20 * -1", () {
+      controller.addToList("20*-1");
+      double current = controller.calculate();
+      expect(current, -20.0);
+    });
+
+    test("Calculate 10 / 5", () {
+      controller.addToList("10/5");
+      double current = controller.calculate();
+      expect(current, 2.0);
+    });
+
+    test("Calculate 10 / 0", () {
+      controller.addToList("10/0");
+      expect(controller.calculate(), throwsException);
     });
   });
 }
