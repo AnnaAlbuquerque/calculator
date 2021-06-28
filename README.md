@@ -1,16 +1,47 @@
-# calculator
+# Calculator
 
-A new Flutter project.
+Project done during Raro Academy course, as the second assignment (LevelUP2)
 
-## Getting Started
+## About the application
 
-This project is a starting point for a Flutter application.
+This project consist of a standard calculator.
 
-A few resources to get you started if this is your first Flutter project:
+//Add gif of the application
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Functionalities
+
+* Addition
+* Subtraction
+* Division
+* Multiplication
+* AC 
+    * On press: erases the last digit
+    * On long press: clears everything that were typed
+// Add gif
+* Gesture Detector on display that when user swipe erases the last digit
+//Add gif
+
+### Still not implemented
+
+* Change signal (+/-)
+* Percentage (%)
+* Undo (Button without icon)
+* Dark/ Light mode
+
+### Bugs
+Some bugs that are known to be happening:
+* Addition of multiple minus signal
+* Addition of multiple dots in the same number
+* Acceptance of other operations after the minus signal is added to indicate negative number
+    * Example: 
+        //Colocar gif
+* Calculation are done, without consider operations priority
+## To Do
+- [ ] Fix bugs reported
+- [ ] Implement missing functionalities
+- [ ] Test in different size screens
+- [ ] Test in iOs devices
+
+## Extra Information
+* The layout was done by [Lucia Scott](https://dribbble.com/luciascott) and available at [Dribbble](https://dribbble.com/shots/14709020-Calculator/attachments/6408579?mode=media)
