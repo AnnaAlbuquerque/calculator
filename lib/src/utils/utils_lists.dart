@@ -1,3 +1,4 @@
+/// List of buttons values
 List<String> buttonValues = [
   "AC", //0
   "+/-", //1
@@ -21,7 +22,7 @@ List<String> buttonValues = [
   "=" //19
 ];
 
-/// List with numbers
+/// List of numbers
 List<String> numbers = [
   "1",
   "2",
@@ -35,13 +36,14 @@ List<String> numbers = [
   "0",
 ];
 
+// List of operators
 List<String> operators = [
   "+",
   "/",
   "*",
 ];
 
-/// List with acceptable values
+/// List of acceptable values
 List<String> acceptableValues = [
   "0",
   "1",
@@ -61,6 +63,7 @@ List<String> acceptableValues = [
   ".",
 ];
 
+///List of values that can be the first on [screenValue]
 List<String> notFirst = [
   "+",
   "/",
